@@ -1,20 +1,13 @@
 import streamlit as st
 
-if 'text_list' not in st.session_state:
-  st.session_state.text_list = []
-  
-# Text input
-user_input = st.text_input('Enter some text')
+st.set_page_config(
+  page_title="Welcome", 
+  page_icon="👋"
+)
 
-# Buttons
-if st.button('Append'):
-  st.session_state.text_list.append(user_input)
-  
-if st.button('Clear'):
-  st.session_state.text_list = []
+st.write("# Welcome to Streamlit! 👋")
 
-# Display the list
-st.write('Text list:', st.session_state.text_list)
+st.sidebar.success("Select Demo above.")
   
 
 
