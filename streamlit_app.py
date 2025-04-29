@@ -15,16 +15,16 @@ if file is not None:
   numerical_columns = df.select_dtypes(include=['number']).columns.to_list()
 
   with tab1:
-  x_column = st.selectbox('Select column on x axis:', numerical_columns)
-  y_column = st.selectbox('Select column on y axis', numerical_columns)
-  color = st.selectbox('Select column to be color', df.columns)
-  fig_scatter = px.scatter(df, x = x_column, y=y_column, color=color)
-  st.plotly_chart(fig_scatter)
+    x_column = st.selectbox('Select column on x axis:', numerical_columns)
+    y_column = st.selectbox('Select column on y axis', numerical_columns)
+    color = st.selectbox('Select column to be color', df.columns)
+    fig_scatter = px.scatter(df, x = x_column, y=y_column, color=color)
+    st.plotly_chart(fig_scatter)
 
   with tab2:
-  histogram_feature = st.selectbox('Select feature to histogram', numerical_columns)
-  fig_hist = px.histogram(df, x=histogram_feature)
-  st.plotly_chart(fig_hist)
+    histogram_feature = st.selectbox('Select feature to histogram', numerical_columns)
+    fig_hist = px.histogram(df, x=histogram_feature)
+    st.plotly_chart(fig_hist)
   
 
 
