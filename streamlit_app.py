@@ -17,5 +17,6 @@ else:
 
 show_btn = st.button('show area')
 if show_btn:
-    st.write(area)
-st.spinner("Computing...")
+   with st.spinner("Computing..."):
+    time.sleep(1)
+    st.write("Area: ", area)
