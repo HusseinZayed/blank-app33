@@ -19,5 +19,11 @@ if file is not None:
   st.plotly_chart(fig_scatter)
 
 
+  histogram_feature = st.selectbox('Select feature to histogram', numerical_columns)
+  fig_hist = px.histogram(df, x=histogram_feature)
+  st.plotly_chart(fig_hist)
+  
+
+
   
           
