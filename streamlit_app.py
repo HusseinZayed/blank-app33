@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("🎈 My new app")
+st.title("new app")
 if shape=='Circle':
     r = st.number_input('Reduis: ',1.0,step=.1,max_value=10.0)
     area = 3.14*2*r
