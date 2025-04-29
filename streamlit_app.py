@@ -9,10 +9,12 @@ if file is not None:
   columns_to_show = st.multiselect("Select columns to show", df.columns.to_list(), default=df.columns.to_list())  
   st.write(df.loc[:n_rows,columns_to_show])
 
-x_column = st.selectbox('Select column on x axis:', numerical_columns)
-y_column = st.selectbox('Select column on y axis', numerical_columns)
-color = st.selectbox('Select column to be color', df.columns)
-fig_scatter = px.scatter(df, x = x_column, y=y_column, color=color)
-st.plotly_chart(fig_scatter)
+  x_column = st.selectbox('Select column on x axis:', numerical_columns)
+  y_column = st.selectbox('Select column on y axis', numerical_columns)
+  color = st.selectbox('Select column to be color', df.columns)
+  fig_scatter = px.scatter(df, x = x_column, y=y_column, color=color)
+  st.plotly_chart(fig_scatter)
+
+
   
           
