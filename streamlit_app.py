@@ -19,7 +19,7 @@ if file is not None:
     with col1:
       x_column = st.selectbox('Select column on x axis:', numerical_columns)
     with col2:
-    y_column = st.selectbox('Select column on y axis', numerical_columns)
+      y_column = st.selectbox('Select column on y axis', numerical_columns)
     with col3:
       color = st.selectbox('Select column to be color', df.columns)
     fig_scatter = px.scatter(df, x = x_column, y=y_column, color=color)
