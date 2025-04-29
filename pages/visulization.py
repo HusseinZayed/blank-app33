@@ -1,31 +1,41 @@
 import streamlit as st
-import time
+import pandas as pd
+import plotly.express as px
+import numpy as np
 
-st.header("Shapes Calculations")
-
-st.sidebar.title("Configuration")
-
-with st.sidebar:
-  shape = st.selectbox("Choose shape:", ["Circle", "Rectangle"])
-
-area = None
-perimeter = None
-if shape == 'Circle':
-  radius = st.number_input('Radius:', min_value=0, max_value=100, step=1)
-  area = radius * radius * 3.14
-  perimeter = 2 * 3.14 * radius
+@st.cache_data
+def load_data(file):
+  return pd.read_csv(file)
   
-if shape == 'Rectangle':
-  width = st.number_input('Width', 0., step=0.1)
-  height = st.number_input('Height', 0., step=0.1)
-  area = width * height
-  perimeter = 2 * (width + height)
+file = st.file_uploader("Upload file", type=["csv"])
 
-compute_btn = st.button("Compute Area and Perimeter")
-if compute_btn:
+if file is not None:
+  df = load_data(file)
   
-  with st.spinner("Computing..."):
-    time.sleep(1)
-    st.write("Area: ", area)
-    st.write("Perimeter: ", perimeter)
+  n_rows = st.slider('Choose number of rows to display', min_value=5, max_value=len(df), step=1)
   
+  columns_to_show = st.multiselect("Select columns to show", df.columns.to_list(), default=df.columns.to_list())
+  numerical_columns = df.select_dtypes(include=np.number).columns.to_list()
+  
+  st.write(df[:n_rows][columns_to_show])
+  
+  tab1, tab2 = st.tabs(["Scatter plot", "Histogram"])
+  
+  with tab1:
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+      x_column = st.selectbox('Select column on x axis:', numerical_columns)
+    with col2:
+      y_column = st.selectbox('Select column on y axis', numerical_columns)
+    with col3:
+      color = st.selectbox('Select column to be color', df.columns)
+    
+    fig_scatter = px.scatter(df, x = x_column, y=y_column, color=color)
+    
+    st.plotly_chart(fig_scatter)
+  
+  with tab2:
+    histogram_feature = st.selectbox('Select feature to histogram', numerical_columns)
+    fig_hist = px.histogram(df, x=histogram_feature)
+    st.plotly_chart(fig_hist)
