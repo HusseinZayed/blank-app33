@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 st.title("new app")
 st.sidebar.title("Configuration")
@@ -17,3 +18,4 @@ else:
 show_btn = st.button('show area')
 if show_btn:
     st.write(area)
+st.spinner("Computing..."):
