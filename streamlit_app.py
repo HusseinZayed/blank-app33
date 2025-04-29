@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 file = st.file_uploader("Upload file", type=["csv"])
 
