@@ -18,4 +18,4 @@ else:
 show_btn = st.button('show area')
 if show_btn:
     st.write(area)
-st.spinner("Computing..."):
+st.spinner("Computing...")
