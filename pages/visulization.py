@@ -3,14 +3,10 @@ import pandas as pd
 import plotly.express as px
 import numpy as np
 
-@st.cache_data
-def load_data(file):
-  return pd.read_csv(file)
-  
-file = st.file_uploader("Upload file", type=["csv"])
-
-if file is not None:
-  df = load_data(file)
+st.session_state.file=''
+st.session_state.file = st.file_uploader("Upload file", type=["csv"])
+if st.session_state.file is not None:
+  df = load_data(st.session_state.file)
   
   n_rows = st.slider('Choose number of rows to display', min_value=5, max_value=len(df), step=1)
   
