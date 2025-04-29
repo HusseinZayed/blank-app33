@@ -11,7 +11,7 @@ if file is not None:
   columns_to_show = st.multiselect("Select columns to show", df.columns.to_list(), default=df.columns.to_list())  
   st.write(df.loc[:n_rows,columns_to_show])
 
-  numerical_columns = df.select_dtypes(include['number']).columns.to_list()
+  numerical_columns = df.select_dtypes(include=['number']).columns.to_list()
 
   x_column = st.selectbox('Select column on x axis:', numerical_columns)
   y_column = st.selectbox('Select column on y axis', numerical_columns)
