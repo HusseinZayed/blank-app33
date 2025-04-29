@@ -1,7 +1,11 @@
 import streamlit as st
 
 st.title("new app")
-shape = st.selectbox('Choose shape',['Circle','rectangle'])
+st.sidebar.title("Configuration")
+
+with st.sidebar:
+  shape = st.selectbox("Choose shape:", ["Circle", "Rectangle"])
+    
 if shape=='Circle':
     r = st.number_input('Reduis: ',1.0,step=.1,max_value=10.0)
     area = 3.14*2*r
