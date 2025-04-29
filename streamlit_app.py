@@ -1,6 +1,8 @@
 import streamlit as st
 
-text_list=[]
+if 'text_list' not in st.session_state:
+  st.session_state.text_list = []
+  
 # Text input
 user_input = st.text_input('Enter some text')
 
