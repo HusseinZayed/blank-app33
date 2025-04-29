@@ -15,9 +15,13 @@ if file is not None:
   numerical_columns = df.select_dtypes(include=['number']).columns.to_list()
 
   with tab1:
-    x_column = st.selectbox('Select column on x axis:', numerical_columns)
+    col1, col2, col3 = st.columns(3)
+    with col1:
+      x_column = st.selectbox('Select column on x axis:', numerical_columns)
+    with col2:
     y_column = st.selectbox('Select column on y axis', numerical_columns)
-    color = st.selectbox('Select column to be color', df.columns)
+    with col3:
+      color = st.selectbox('Select column to be color', df.columns)
     fig_scatter = px.scatter(df, x = x_column, y=y_column, color=color)
     st.plotly_chart(fig_scatter)
 
