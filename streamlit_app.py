@@ -12,7 +12,7 @@ if st.button('Clear'):
   ls = []
 
 # Display the list
-st.write('Text list:', ls)
+st.write('Text list:', ls) 
   
 
 
