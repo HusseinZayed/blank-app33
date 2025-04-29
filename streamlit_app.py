@@ -1,18 +1,17 @@
 import streamlit as st
 
-ls=[]
 # Text input
 user_input = st.text_input('Enter some text')
 
 # Buttons
 if st.button('Append'):
-  ls.append(user_input)
+  st.session_state.text_list.append(user_input)
   
 if st.button('Clear'):
-  ls = []
+  st.session_state.text_list = []
 
 # Display the list
-st.write('Text list:', ls) 
+st.write('Text list:', st.session_state.text_list)
   
 
 
