@@ -1,5 +1,6 @@
 import streamlit as st
 
+text_list=[]
 # Text input
 user_input = st.text_input('Enter some text')
 
